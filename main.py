@@ -3,16 +3,19 @@ from aiogram.filters.command import Command
 from aiogram.fsm.context import FSMContext
 from aiogram import Bot, Dispatcher, types, F
 from aiogram.fsm.storage.memory import MemoryStorage
-from config import BOT_API_KEY, ADMIN_ID, MONGO_DB_PASSWORD, MONGO_DB_USERNAME
+from config import BOT_API_KEY, ADMIN_ID
+
 
 # Настройка логирования
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
+
 # Инициализация бота и диспетчера
 bot = Bot(token=BOT_API_KEY)
 storage = MemoryStorage()
 dp = Dispatcher(storage=storage)
+
 
 # Команда старт
 @dp.message(Command("start"))
@@ -28,6 +31,8 @@ async def main():
     # Запуск бота
     await dp.start_polling(bot)
 
+
 if __name__ == '__main__':
     import asyncio
     asyncio.run(main())
+

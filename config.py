@@ -1,8 +1,8 @@
 from dotenv import dotenv_values
+import os
 
 config = dotenv_values(".env")
 
-BOT_API_KEY = config.get("BOT_API_KEY")
-ADMIN_ID = config.get("ADMIN_ID")
-MONGO_DB_USERNAME = config.get("MONGO_DB_USERNAME")
-MONGO_DB_PASSWORD = config.get("MONGO_DB_PASSWORD")
+BOT_API_KEY = os.environ.get("BOT_API_KEY") or config.get("BOT_API_KEY")
+ADMIN_ID = os.environ.get("ADMIN_ID") or config.get("ADMIN_ID")
+ADMIN_ID = int(ADMIN_ID)
